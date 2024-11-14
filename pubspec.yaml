@@ -41,9 +41,7 @@ dependencies:
   path:
   date_picker_plus:
   intl: ^0.19.0
-  sqflite_common:
-  sqflite_common_ffi:
-  sqflite_common_ffi_web:
+  sqflite_common_ffi_web: ^0.4.2+2
 
 dev_dependencies:
   flutter_test:

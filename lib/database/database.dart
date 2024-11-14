@@ -42,10 +42,6 @@ class DatabaseProvider {
 
   // the code below is used to create a method to create the database
   Future<Database> createDatabase() async {
-    // the code below is used to get the location of the application document directory
-    Directory docDirectory = await getApplicationDocumentsDirectory();
-    // the code below is useed to get the path where our sqlite database will be located
-    // by using the join method
     String path;
     var database;
 
@@ -53,9 +49,9 @@ class DatabaseProvider {
       sqfliteFfiInit();
       // Change default factory on the web
       databaseFactory = databaseFactoryFfiWeb;
-
+      print('ok');
       database = await openDatabase(
-        '/test/test.db', // the path where our database is located
+        'my_web_web.db', // the path where our database is located
         version: 1,
         onCreate: (Database db, int version) async {
           await db.execute("CREATE TABLE empListTable ("
@@ -72,6 +68,10 @@ class DatabaseProvider {
         },
       );
     } else {
+      // the code below is used to get the location of the application document directory
+      Directory docDirectory = await getApplicationDocumentsDirectory();
+      // the code below is useed to get the path where our sqlite database will be located
+      // by using the join method
       path = join(
           docDirectory.path, "empList.db"); // here empList.db is the name of
       // our database
